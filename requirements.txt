@@ -1,0 +1,7 @@
+python-dotenv
+azure-identity
+uvicorn
+azure-ai-projects
+mcp
+streamlit
+streamlit-chat
