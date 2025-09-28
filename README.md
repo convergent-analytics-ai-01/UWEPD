@@ -14,8 +14,7 @@ This project demonstrates various implementations of MCP (Model Context Protocol
 ├── .gitignore                     # Git ignore rules
 ├── streamlit_mcpclientapp.py      # Main Streamlit MCP client application
 ├── client.py                      # Python MCP client implementation
-├── client_v2.py                   # Enhanced MCP client (version 2)
-├── client_v3.py                   # Advanced MCP client (version 3)
+├── client_python.py               # Advanced MCP client (version 3)
 ├── backup/                        # Backup versions of Streamlit apps
 │   ├── streamlit_mcpclient.py     # Original Streamlit client
 │   ├── streamlit_mcpclient2.py    # Version 2
