@@ -214,7 +214,9 @@ with col1:
         with st.spinner("Agent is processing..."):
             model_deployment = os.getenv("MODEL_DEPLOYMENT_NAME")
             agents_client = AgentsClient(endpoint=project_endpoint, credential=DefaultAzureCredential())
-            mcp_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
+            # mcp_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
+            mcp_tool = McpTool(server_label="mslearn", server_url="https://wikimcp07.azurewebsites.net/mcp")
+    
             mcp_tool.set_approval_mode("never")
             toolset = ToolSet()
             toolset.add(mcp_tool)
@@ -223,8 +225,8 @@ with col1:
             agent = agents_client.create_agent(
                 model=model_deployment, name="my-mcp-agent",
                 instructions=(
-                    "You are a helpful AI Agent for Tony, specializing in Microsoft documentation.\n"
-                    "Your **primary directive** is to use the `mslearn` MCP tool to answer any questions related to Microsoft products, services, technologies, or documentation.\n"
+                    "You are a helpful AI Agent for Tony, specializing in Wikipedia documentation.\n"
+                    "Your **primary directive** is to use the `Wikipedia` MCP tool to answer any questions related to Wikipedia content.\n"
                     "You **must not** answer these questions from your own pre-existing knowledge. Always prioritize fetching the most current information from the MCP tool.\n"
                     "When the MCP tool is used, your response **must** begin with 'Hello Tony, I am using the MCP to fetch this information.'"
                 )
