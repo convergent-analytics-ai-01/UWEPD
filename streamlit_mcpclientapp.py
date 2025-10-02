@@ -214,13 +214,21 @@ with col1:
         with st.spinner("Agent is processing..."):
             model_deployment = os.getenv("MODEL_DEPLOYMENT_NAME")
             agents_client = AgentsClient(endpoint=project_endpoint, credential=DefaultAzureCredential())
-            # mcp_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
-            mcp_tool = McpTool(server_label="mslearn", server_url="https://wikimcp07.azurewebsites.net/mcp")
-    
-            mcp_tool.set_approval_mode("never")
-            toolset = ToolSet()
-            toolset.add(mcp_tool)
 
+            # Custom Wikipedia MCP endpoint
+            mcp_wikipedia_tool = McpTool(server_label="wikipedia", server_url="https://wikimcp07.azurewebsites.net/mcp")
+            mcp_wikipedia_tool.set_approval_mode("never")
+
+            toolset = ToolSet()
+            toolset.add(mcp_wikipedia_tool)
+
+            # If you had multiple MCP tools, you could add them here:
+            # MS Learn MCP endpoint
+            # mcp_mslearn_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
+            # mcp_mslearn_tool.set_approval_mode("never")
+            # toolset.add(mcp_mslearn_tool)
+
+            
             st.session_state.log_messages.append(("info", "Creating agent..."))
             agent = agents_client.create_agent(
                 model=model_deployment, name="my-mcp-agent",
