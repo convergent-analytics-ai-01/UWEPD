@@ -224,17 +224,17 @@ with col1:
 
             # If you had multiple MCP tools, you could add them here:
             # MS Learn MCP endpoint
-            # mcp_mslearn_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
-            # mcp_mslearn_tool.set_approval_mode("never")
-            # toolset.add(mcp_mslearn_tool)
+            mcp_mslearn_tool = McpTool(server_label="mslearn", server_url="https://learn.microsoft.com/api/mcp")
+            mcp_mslearn_tool.set_approval_mode("never")
+            toolset.add(mcp_mslearn_tool)
 
             
             st.session_state.log_messages.append(("info", "Creating agent..."))
             agent = agents_client.create_agent(
                 model=model_deployment, name="my-mcp-agent",
                 instructions=(
-                    "You are a helpful AI Agent for Tony, specializing in Wikipedia documentation.\n"
-                    "Your **primary directive** is to use the `Wikipedia` MCP tool to answer any questions related to Wikipedia content.\n"
+                    "You are a helpful AI Agent for Tony, specializing in Wikipedia and Microsoft Learn documentation.\n"
+                    "Your **primary directive** is to use the `Wikipedia` and 'MSLearn' MCP tools to answer any questions related to these content areas.\n"
                     "You **must not** answer these questions from your own pre-existing knowledge. Always prioritize fetching the most current information from the MCP tool.\n"
                     "When the MCP tool is used, your response **must** begin with 'Hello Tony, I am using the MCP to fetch this information.'"
                 )
